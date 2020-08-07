@@ -5,10 +5,12 @@
   </head>
 
   <body>
-    <div id="canvas-container">
+    <div id="container">
       <canvas id="canvas"></canvas>
       <p id="name">Jackson Nunley</p>
       <a href="https://github.com/Noskcaj19"><p id="username">@Noskcaj19</p></a>
+      <p id="tag">Writing code for fun and profit</p>
+      <p id="school">Currently at Florida Polytechnic</p>
     </div>
     <script src="index.js"></script>
   </body>
@@ -23,6 +25,15 @@
       background-color: black;
     }
 
+    p {
+      color: white;
+      font-family: "Avenir", sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
     #canvas {
       z-index: -1;
       position: absolute;
@@ -32,29 +43,28 @@
       right: 0px;
     }
 
-    p {
-      color: white;
-      font-family: "Avenir", sans-serif;
+    #container {
+      text-align: center;
     }
 
     #name {
       margin-top: 0.5em;
       margin-bottom: 0px;
-      text-align: center;
       font-size: 7em;
-      font-family: "Avenir", sans-serif;
-    }
-
-    a {
-      text-decoration: none;
     }
 
     #username {
       margin-top: 0px;
-      text-align: center;
-      text-align: center;
       font-size: 3em;
       font-family: "Inconsolata", sans-serif;
+    }
+
+    #tag {
+      font-size: 1.5em;
+    }
+
+    #school {
+      font-size: 1.25em;
     }
   </style>
 </html>
