@@ -1,8 +1,7 @@
 import { range, random } from "lodash-es";
 
 const radius = 3;
-const count = 100;
-const maxDist = 40;
+const linkingDist = 40;
 
 function distance(x1: number, y1: number, x2: number, y2: number): number {
   var a = x1 - x2;
@@ -16,6 +15,8 @@ var timeout: NodeJS.Timeout;
 let setup = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
+  const seed = (width * height) / 2;
+  const count = Math.min(seed * 0.0005, 1000);
 
   let canvas = <HTMLCanvasElement>document.getElementById("canvas");
   canvas.width = width;
@@ -49,7 +50,9 @@ let setup = () => {
     for (const node of nodes) {
       for (const otherNode of nodes) {
         if (node.x != otherNode.x && node.y != otherNode.y)
-          if (distance(node.x, node.y, otherNode.x, otherNode.y) < maxDist) {
+          if (
+            distance(node.x, node.y, otherNode.x, otherNode.y) < linkingDist
+          ) {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(otherNode.x, otherNode.y);
