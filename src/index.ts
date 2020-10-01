@@ -1,7 +1,7 @@
 import { range, random } from "lodash-es";
 
 const radius = 3;
-const linkingDist = 40;
+const linkingDist = 100;
 
 function distance(x1: number, y1: number, x2: number, y2: number): number {
   var a = x1 - x2;
@@ -38,8 +38,8 @@ let setup = () => {
       <Node>{
         x: random(0, width),
         y: random(0, height),
-        xs: random(-2, 2.0),
-        ys: random(-2, 2.0),
+        xs: random(-0.3, 0.3),
+        ys: random(-0.3, 0.3),
       }
   );
 
