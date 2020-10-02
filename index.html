@@ -8,7 +8,11 @@
     <div id="container">
       <canvas id="canvas"></canvas>
       <p id="name">Jackson Nunley</p>
-      <a href="https://github.com/Noskcaj19"><p id="username">@Noskcaj19</p></a>
+      <a id="username-link" href="https://github.com/Noskcaj19">
+        <p id="username">
+          <img id="gh-username-icon" src="./assets/gh.png" />@Noskcaj19
+        </p>
+      </a>
       <p id="tag">Writing code for fun and profit</p>
       <p id="school">Currently at Florida Polytechnic</p>
     </div>
@@ -34,6 +38,10 @@
       text-decoration: none;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
+
     #canvas {
       z-index: -1;
       position: absolute;
@@ -51,6 +59,15 @@
       margin-top: 0.5em;
       margin-bottom: 0px;
       font-size: 7em;
+    }
+
+    #gh-username-icon {
+      height: 0.75em;
+      margin-right: 8px;
+    }
+
+    #username-link {
+      display: inline;
     }
 
     #username {
