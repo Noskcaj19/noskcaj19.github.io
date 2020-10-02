@@ -1,7 +1,9 @@
 import { range, random } from "lodash-es";
 
 const radius = 3;
-const linkingDist = 100;
+const linkingDist = 90;
+const fadeRange = 10;
+const fadeDist = linkingDist + fadeRange;
 
 function distance(x1: number, y1: number, x2: number, y2: number): number {
   var a = x1 - x2;
@@ -49,15 +51,22 @@ let setup = () => {
     ctx.clearRect(0, 0, width, height);
     for (const node of nodes) {
       for (const otherNode of nodes) {
-        if (node.x != otherNode.x && node.y != otherNode.y)
-          if (
-            distance(node.x, node.y, otherNode.x, otherNode.y) < linkingDist
-          ) {
+        if (node.x != otherNode.x && node.y != otherNode.y) {
+          let nodeDistance = distance(node.x, node.y, otherNode.x, otherNode.y);
+          if (nodeDistance < linkingDist) {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(otherNode.x, otherNode.y);
             ctx.stroke();
+          } else if (nodeDistance < fadeDist) {
+            ctx.globalAlpha = (fadeDist - nodeDistance) / fadeRange;
+            ctx.beginPath();
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(otherNode.x, otherNode.y);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
           }
+        }
       }
     }
 
