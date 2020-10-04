@@ -8,9 +8,17 @@
     <div id="container">
       <canvas id="canvas"></canvas>
       <p id="name">Jackson Nunley</p>
-      <a id="username-link" href="https://github.com/Noskcaj19">
-        <p id="username">
-          <img id="gh-username-icon" src="./assets/gh.png" />@Noskcaj19
+      <a class="username-link" href="https://github.com/Noskcaj19">
+        <p id="gh-username">
+          <img class="username-icon" src="./assets/gh.png" />@Noskcaj19
+        </p>
+      </a>
+      <a
+        class="username-link"
+        href="https://www.linkedin.com/in/jackson-nunley-b490901b9/"
+      >
+        <p id="ln-username">
+          <img class="username-icon" src="./assets/ln.png" />Jackson Nunley
         </p>
       </a>
       <p id="tag">Writing code for fun and profit</p>
@@ -61,19 +69,26 @@
       font-size: 7em;
     }
 
-    #gh-username-icon {
+    .username-icon {
       height: 0.75em;
       margin-right: 8px;
     }
 
-    #username-link {
+    .username-link {
       display: inline;
     }
 
-    #username {
+    #gh-username {
       margin-top: 0px;
+      margin-bottom: 0px;
       font-size: 3em;
       font-family: "Inconsolata", sans-serif;
+    }
+
+    #ln-username {
+      margin-top: 0px;
+      font-size: 2.5em;
+      /* font-family: "Inconsolata", sans-serif; */
     }
 
     #tag {
