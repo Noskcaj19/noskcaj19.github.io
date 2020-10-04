@@ -4,6 +4,7 @@ const radius = 3;
 const linkingDist = 90;
 const fadeRange = 10;
 const fadeDist = linkingDist + fadeRange;
+var running = true;
 
 function distance(x1: number, y1: number, x2: number, y2: number): number {
   var a = x1 - x2;
@@ -21,6 +22,7 @@ let setup = () => {
   const count = Math.min(seed * 0.0005, 1000);
 
   let canvas = <HTMLCanvasElement>document.getElementById("canvas");
+  let pauseButton = <HTMLButtonElement>document.getElementById("pause-button")!;
   canvas.width = width;
   canvas.height = height;
   canvas.setAttribute("width", width.toString());
@@ -89,11 +91,26 @@ let setup = () => {
       }
     }
     clearTimeout(timeout);
-    timeout = setTimeout(draw, 50);
+    if (running) {
+      timeout = setTimeout(draw, 50);
+    }
+  };
+
+  pauseButton.onclick = function () {
+    if (running) {
+      pauseButton.className = "paused";
+      running = false;
+    } else {
+      pauseButton.className = "";
+      running = true;
+      draw();
+    }
   };
 
   onresize = () => {
-    setup();
+    if (running) {
+      setup();
+    }
   };
 
   draw();

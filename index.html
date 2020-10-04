@@ -24,6 +24,7 @@
       <p id="tag">Writing code for fun and profit</p>
       <p id="school">Currently at Florida Polytechnic University</p>
     </div>
+    <button id="pause-button"></button>
     <script src="index.js"></script>
   </body>
   <link
@@ -88,7 +89,6 @@
     #ln-username {
       margin-top: 0px;
       font-size: 2.5em;
-      /* font-family: "Inconsolata", sans-serif; */
     }
 
     #tag {
@@ -97,6 +97,25 @@
 
     #school {
       font-size: 1.25em;
+    }
+
+    button#pause-button.paused {
+      background-image: url(./assets/resume.svg);
+    }
+
+    #pause-button {
+      padding: 1em;
+      background-image: url(./assets/pause.svg);
+      background-color: transparent;
+      background-size: 0.6em;
+      background-position: center;
+      appearance: none;
+      position: absolute;
+      top: 0.75em;
+      left: 0.75em;
+      border: none;
+      background-repeat: no-repeat;
+      cursor: pointer;
     }
   </style>
 </html>
