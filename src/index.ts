@@ -1,10 +1,15 @@
 import { range, random } from "lodash-es";
 
+const reducedMotionQuery = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
+
 const radius = 3;
 const linkingDist = 90;
 const fadeRange = 10;
 const fadeDist = linkingDist + fadeRange;
-var running = true;
+var running = reducedMotionQuery && !reducedMotionQuery.matches;
+var timeout: NodeJS.Timeout;
 
 function distance(x1: number, y1: number, x2: number, y2: number): number {
   var a = x1 - x2;
@@ -12,8 +17,6 @@ function distance(x1: number, y1: number, x2: number, y2: number): number {
 
   return Math.hypot(a, b);
 }
-
-var timeout: NodeJS.Timeout;
 
 let setup = () => {
   const width = window.innerWidth;
@@ -96,22 +99,28 @@ let setup = () => {
     }
   };
 
-  pauseButton.onclick = function () {
+  function setPauseState(newRunning: boolean) {
+    running = newRunning;
     if (running) {
-      pauseButton.className = "paused";
-      running = false;
-    } else {
       pauseButton.className = "";
-      running = true;
       draw();
+    } else {
+      pauseButton.className = "paused";
     }
-  };
+  }
+
+  pauseButton.onclick = () => setPauseState(!running);
 
   onresize = () => {
     if (running) {
       setup();
     }
   };
+
+  reducedMotionQuery.addEventListener("change", () => {
+    setPauseState(!reducedMotionQuery.matches);
+  });
+  setPauseState(running);
 
   draw();
 };
