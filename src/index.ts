@@ -20,7 +20,10 @@ function distance(x1: number, y1: number, x2: number, y2: number): number {
 
 let setup = () => {
   const width = window.innerWidth;
-  const height = window.innerHeight;
+  const height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  );
   const seed = (width * height) / 2;
   const count = Math.min(seed * 0.0005, 1000);
 
