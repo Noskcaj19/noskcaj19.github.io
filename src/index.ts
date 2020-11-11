@@ -114,12 +114,7 @@ let setup = () => {
 
   pauseButton.onclick = () => setPauseState(!running);
 
-  onresize = () => {
-    if (running) {
-      setup();
-    }
-  };
-
+  onresize = setup;
   reducedMotionQuery.addEventListener("change", () => {
     setPauseState(!reducedMotionQuery.matches);
   });
