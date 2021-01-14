@@ -1,0 +1,84 @@
+body {
+  margin: 0px;
+  background-color: black;
+}
+
+p {
+  color: white;
+  font-family: 'Avenir', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#canvas {
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+#container {
+  text-align: center;
+}
+
+#name {
+  margin-top: 0.5em;
+  margin-bottom: 0px;
+  font-size: 7em;
+}
+
+.username-icon {
+  height: 2em;
+  margin-right: 8px;
+}
+
+.username-link {
+  display: inline-block;
+}
+
+#gh-username {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 3em;
+  font-family: 'Inconsolata', sans-serif;
+}
+
+#ln-username {
+  margin-top: 0px;
+  font-size: 2.5em;
+}
+
+#tag {
+  font-size: 1.5em;
+}
+
+#school {
+  font-size: 1.25em;
+}
+
+button#pause-button.paused {
+  background-image: url(./play-solid.svg);
+}
+
+#pause-button {
+  padding: 1em;
+  background-image: url(./pause-solid.svg);
+  background-color: transparent;
+  background-size: 0.6em;
+  background-position: center;
+  appearance: none;
+  position: absolute;
+  top: 0.75em;
+  left: 0.75em;
+  border: none;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
