@@ -1,3 +1,7 @@
+import './base.css'
+import './utilities.css'
+import './index.css'
+
 import { random, range } from './utilities'
 
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')

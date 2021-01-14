@@ -1,0 +1,18 @@
+button#pause-button.paused {
+  background-image: url(./../play-solid.svg);
+}
+
+button#pause-button {
+  padding: 1em;
+  background-image: url(./../pause-solid.svg);
+  background-color: transparent;
+  background-size: 0.6em;
+  background-position: center;
+  appearance: none;
+  position: absolute;
+  top: 0.75em;
+  left: 0.75em;
+  border: none;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
