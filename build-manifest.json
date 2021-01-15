@@ -1,0 +1,76 @@
+{
+  "inputs": {
+    "dist/base.css": {
+      "bytes": 9350,
+      "imports": []
+    },
+    "dist/utilities.css": {
+      "bytes": 2506,
+      "imports": []
+    },
+    "dist/index.css": {
+      "bytes": 458,
+      "imports": []
+    },
+    "dist/utilities.js": {
+      "bytes": 208,
+      "imports": []
+    },
+    "dist/index.js": {
+      "bytes": 3000,
+      "imports": [
+        {
+          "path": "dist/base.css"
+        },
+        {
+          "path": "dist/utilities.css"
+        },
+        {
+          "path": "dist/index.css"
+        },
+        {
+          "path": "dist/utilities.js"
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "../~~bundle~~/dist/index.js": {
+      "imports": [],
+      "exports": [],
+      "inputs": {
+        "dist/base.css": {
+          "bytesInOutput": 0
+        },
+        "dist/utilities.css": {
+          "bytesInOutput": 0
+        },
+        "dist/index.css": {
+          "bytesInOutput": 0
+        },
+        "dist/utilities.js": {
+          "bytesInOutput": 109
+        },
+        "dist/index.js": {
+          "bytesInOutput": 1270
+        }
+      },
+      "bytes": 1380
+    },
+    "../~~bundle~~/dist/index.css": {
+      "imports": [],
+      "inputs": {
+        "dist/base.css": {
+          "bytesInOutput": 2336
+        },
+        "dist/index.css": {
+          "bytesInOutput": 376
+        },
+        "dist/utilities.css": {
+          "bytesInOutput": 1970
+        }
+      },
+      "bytes": 4683
+    }
+  }
+}
