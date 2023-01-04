@@ -1,21 +1,27 @@
-import './base.css'
-import './utilities.css'
-import './index.css'
-
-import { random, range } from './utilities'
-
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
-const radius = 3
-const linkingDist = 90
-const fadeRange = 10
-const fadeDist = linkingDist + fadeRange
+var radius = 3
+var linkingDist = 90
+var fadeRange = 10
+var fadeDist = linkingDist + fadeRange
 var running = reducedMotionQuery && !reducedMotionQuery.matches
-var timeout: NodeJS.Timeout
+var timeout
 
-function distance(x1: number, y1: number, x2: number, y2: number): number {
-  var a = x1 - x2
-  var b = y1 - y2
+function random(low , high)  {
+  return low + Math.random() * (high - low)
+}
+
+function range(low, high) {
+  let out = []
+  for (let i = low; i < high; i++) {
+    out.push(i)
+  }
+  return out
+}
+
+function distance(x1 , y1, x2, y2) {
+  let a = x1 - x2
+  let b = y1 - y2
 
   return Math.hypot(a, b)
 }
@@ -26,33 +32,25 @@ let setup = () => {
     document.body.scrollHeight,
     document.documentElement.scrollHeight,
   )
-  const seed = (width * height) / 2
-  const count = Math.min(seed * 0.0005, 1000)
+  const bias = ((width + fadeDist) * (height + fadeDist)) / 2
+  const count = Math.min(bias * 0.0005, 1000)
 
-  let canvas = <HTMLCanvasElement>document.getElementById('canvas')
-  let pauseButton = <HTMLButtonElement>document.getElementById('pause-button')!
+  let canvas = document.getElementById('canvas')
+  let pauseButton = document.getElementById('pause-button')
   canvas.width = width
   canvas.height = height
   canvas.setAttribute('width', width.toString())
   canvas.setAttribute('height', height.toString())
 
-  let ctx = canvas.getContext('2d')!
-
-  interface Node {
-    x: number
-    y: number
-    xs: number
-    ys: number
-  }
+  let ctx = canvas.getContext('2d')
 
   let nodes = range(0, count).map(
-    () =>
-      <Node>{
-        x: random(0, width),
-        y: random(0, height),
+    () => ({
+        x: random(-fadeDist, width + fadeDist),
+        y: random(-fadeDist, height + fadeDist),
         xs: random(-0.3, 0.3),
         ys: random(-0.3, 0.3),
-      },
+      }),
   )
 
   ctx.strokeStyle = '#404040'
@@ -87,15 +85,23 @@ let setup = () => {
       ctx.fill()
       ctx.stroke()
 
-      node.x = (node.x + node.xs) % (width + radius)
-      node.y = (node.y + node.ys) % (height + radius)
+      node.x = node.x + node.xs
+      node.y = node.y + node.ys
 
-      if (node.x < -radius) {
-        node.x = width + radius
+      if (node.x > (width + radius + fadeDist)) {
+        node.x = -(radius + fadeDist)
       }
 
-      if (node.y < -radius) {
-        node.y = height + radius
+      if (node.y > (height + radius + fadeDist)) {
+        node.y = -(radius + fadeDist)
+      }
+
+      if (node.x < -(radius + fadeDist)) {
+        node.x = width + radius + fadeDist
+      }
+
+      if (node.y < -(radius + fadeDist)) {
+        node.y = height + radius + fadeDist
       }
     }
     clearTimeout(timeout)
@@ -104,7 +110,7 @@ let setup = () => {
     }
   }
 
-  function setPauseState(newRunning: boolean) {
+  function setPauseState(newRunning) {
     running = newRunning
     if (running) {
       pauseButton.className = ''

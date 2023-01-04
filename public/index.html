@@ -4,35 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Personal site of Jackson Nunley" />
+    <link href="index.css" rel="stylesheet">
     <title>Jackson Nunley</title>
   </head>
-  <body class="bg-black">
+  <body>
     <button id="pause-button"></button>
-    <canvas id="canvas" class="absolute -z-10"></canvas>
-    <main class="text-white text-center">
-      <div class="py-20">
-        <h1 class="text-9xl">Jackson Nunley</h1>
+    <canvas id="canvas"></canvas>
+    <main class="text-center">
+      <div id="name-container">
+      <h1 id="name">Jackson Nunley</h1>
+
       </div>
-      <div class="pb-2 text-4xl">
-        <span class="align-middle">
-          <img src="github-brands.svg" class="inline align-top h-8" />
-          <a href="https://github.com/Noskcaj19">
-            <span class="pl-2l font-mono">Noskcaj19</span>
+      <div>
+          <a href="https://github.com/Noskcaj19" id="gh-username">
+            <img src="images/github-brands.svg" class="username-icon github" />
+            <span class="font-mono">Noskcaj19</span>
           </a>
-        </span>
       </div>
-      <div class="text-4xl">
-        <img src="linkedin-brands.svg" class="inline align-top h-8" />
+      <div>
         <a
           href="https://www.linkedin.com/in/jackson-nunley-b490901b9/"
-          class="inline"
+          id="ln-username"
         >
-          <span class="pl-2l">Jackson Nunley</span>
+          <img src="images/linkedin-brands.svg" class="username-icon linkedin" />
+          <span>Jackson Nunley</span>
         </a>
       </div>
-      <p class="pt-7 pb-5 text-2xl">Writing code for fun and profit</p>
-      <p class="text-2xl pb-3">Currently at Florida Polytechnic University</p>
+      <p id="tag">Writing code for fun and profit</p>
+      <p id="school">Currently at Florida Polytechnic University</p>
     </main>
-    <script type="module" src="./dist/index.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
