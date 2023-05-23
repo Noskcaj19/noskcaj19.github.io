@@ -97,6 +97,12 @@ a:hover {
   font-size: 1.5rem;
 }
 
+#job {
+  padding-top: .5rem;
+  padding-bottom: .75rem;
+  font-size: 1.5rem;
+}
+
 button#pause-button.paused {
   background-image: url(./images/play-solid.svg);
 }
