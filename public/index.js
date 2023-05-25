@@ -106,15 +106,20 @@ let setup = () => {
     }
     clearTimeout(timeout)
     if (running) {
-      timeout = setTimeout(draw, 50)
+      timeout = setTimeout(() => requestAnimationFrame(draw), 50)
     }
   }
 
   function setPauseState(newRunning) {
+    let restart = !running && newRunning
     running = newRunning
+
+    if (restart) {
+      draw()
+    }
+
     if (running) {
       pauseButton.className = ''
-      draw()
     } else {
       pauseButton.className = 'paused'
     }
