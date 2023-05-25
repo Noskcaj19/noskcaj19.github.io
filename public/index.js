@@ -7,7 +7,7 @@ var fadeDist = linkingDist + fadeRange
 var running = reducedMotionQuery && !reducedMotionQuery.matches
 var timeout
 
-function random(low , high)  {
+function random(low, high) {
   return low + Math.random() * (high - low)
 }
 
@@ -19,11 +19,11 @@ function range(low, high) {
   return out
 }
 
-function distance(x1 , y1, x2, y2) {
+function distance(x1, y1, x2, y2) {
   let a = x1 - x2
   let b = y1 - y2
 
-  return Math.sqrt(a ** 2 + b**2)
+  return Math.sqrt(a ** 2 + b ** 2)
 }
 
 let setup = () => {
@@ -46,11 +46,11 @@ let setup = () => {
 
   let nodes = range(0, count).map(
     () => ({
-        x: random(-fadeDist, width + fadeDist),
-        y: random(-fadeDist, height + fadeDist),
-        xs: random(-0.3, 0.3),
-        ys: random(-0.3, 0.3),
-      }),
+      x: random(-fadeDist, width + fadeDist),
+      y: random(-fadeDist, height + fadeDist),
+      xs: random(-0.3, 0.3),
+      ys: random(-0.3, 0.3),
+    }),
   )
 
   ctx.strokeStyle = '#404040'
