@@ -55,10 +55,17 @@ let setup = () => {
 
   ctx.strokeStyle = '#404040'
   ctx.fillStyle = 'clear'
+  ctx.lineWidth = 1.5
+  let node
+  let otherNode
+  let len = nodes.length
   const draw = () => {
     ctx.clearRect(0, 0, width, height)
-    for (const node of nodes) {
-      for (const otherNode of nodes) {
+    // 5-6x speedup by using indexes over other for loops
+    for (let i = 0; i < len; i++) {
+      for (let j = i; j < len; j++) {
+        node = nodes[i]
+        otherNode = nodes[j]
         if (node.x != otherNode.x && node.y != otherNode.y) {
           let nodeDistance = distance(node.x, node.y, otherNode.x, otherNode.y)
           if (nodeDistance < linkingDist) {
@@ -78,7 +85,8 @@ let setup = () => {
       }
     }
 
-    for (const node of nodes) {
+    for (let i = 0; i < len; i++) {
+      node = nodes[i]
       ctx.moveTo(node.x + radius, node.y)
       ctx.beginPath()
       ctx.arc(node.x, node.y, radius, 0, Math.PI * 2)
