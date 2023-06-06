@@ -63,7 +63,7 @@ let setup = () => {
     ctx.clearRect(0, 0, width, height)
     // 5-6x speedup by using indexes over other for loops
     for (let i = 0; i < len; i++) {
-      for (let j = i; j < len; j++) {
+      for (let j = i + 1; j < len; j++) {
         node = nodes[i]
         otherNode = nodes[j]
         if (node.x != otherNode.x && node.y != otherNode.y) {
