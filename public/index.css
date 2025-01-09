@@ -39,10 +39,16 @@ a:hover {
 
 #name {
   padding-top: 5rem;
-  font-size: 8rem;
+  font-size: 10vw;
   font-weight: 400;
   line-height: 1;
   padding-bottom: 5rem;
+}
+
+@media (max-width: 550px) {
+  #name {
+    font-size: 18vw;
+  }
 }
 
 .username-icon {
